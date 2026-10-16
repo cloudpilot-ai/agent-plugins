@@ -1,0 +1,8 @@
+{
+  "name": "cloudpilot",
+  "version": "0.1.0",
+  "description": "Official CloudPilot documentation and read-only cluster guidance.",
+  "author": {
+    "name": "CloudPilot"
+  }
+}

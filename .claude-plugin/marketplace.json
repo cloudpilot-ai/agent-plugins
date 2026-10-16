@@ -1,0 +1,14 @@
+{
+  "name": "cloudpilot-agent-plugins",
+  "description": "CloudPilot product knowledge and read-only cluster guidance.",
+  "owner": {
+    "name": "CloudPilot"
+  },
+  "plugins": [
+    {
+      "name": "cloudpilot",
+      "source": "./plugins/cloudpilot",
+      "description": "Official CloudPilot documentation and read-only cluster guidance."
+    }
+  ]
+}

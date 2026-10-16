@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "cloudpilot": {
+      "type": "http",
+      "url": "https://mcp.cloudpilot.ai/mcp"
+    }
+  }
+}
