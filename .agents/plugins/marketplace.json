@@ -1,0 +1,20 @@
+{
+  "name": "cloudpilot-agent-plugins",
+  "interface": {
+    "displayName": "CloudPilot Plugins (Preview)"
+  },
+  "plugins": [
+    {
+      "name": "cloudpilot",
+      "source": {
+        "source": "local",
+        "path": "./plugins/cloudpilot"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

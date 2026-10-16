@@ -1,0 +1,15 @@
+{
+  "name": "cloudpilot",
+  "version": "0.1.0",
+  "description": "Official CloudPilot documentation and read-only cluster guidance.",
+  "author": {
+    "name": "CloudPilot"
+  },
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "CloudPilot",
+    "shortDescription": "Explain product fields and investigate cluster configuration.",
+    "developerName": "CloudPilot"
+  }
+}
