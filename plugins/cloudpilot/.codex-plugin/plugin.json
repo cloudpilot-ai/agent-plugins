@@ -1,6 +1,6 @@
 {
   "name": "cloudpilot",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Official CloudPilot documentation and read-only cluster guidance.",
   "author": {
     "name": "CloudPilot"
@@ -9,7 +9,17 @@
   "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "CloudPilot",
-    "shortDescription": "Explain product fields and investigate cluster configuration.",
-    "developerName": "CloudPilot"
+    "shortDescription": "CloudPilot docs and insights",
+    "longDescription": "Understand CloudPilot product fields and behavior using official documentation. Connect your CloudPilot account to inspect cluster health, optimization status, nodes, NodePools, costs, and alerts through read-only MCP tools. Live data requires authorization and the relevant organization permissions. This plugin does not change settings or perform cluster operations.",
+    "developerName": "CloudPilot",
+    "websiteURL": "https://www.cloudpilot.ai",
+    "defaultPrompt": [
+      "What does minNonSpotReplicas mean in CloudPilot?",
+      "How do CPU used, requested, allocatable, and provisioned differ?",
+      "Help me check the health and optimization status of my selected cluster."
+    ],
+    "brandColor": "#005EFF",
+    "logo": "./assets/logo.svg",
+    "composerIcon": "./assets/logo.svg"
   }
 }
