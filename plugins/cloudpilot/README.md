@@ -10,6 +10,7 @@ manifests, and a production MCP connection. For customer installation, see the
 - `.codex-plugin/plugin.json`: Codex compatibility manifest.
 - `.claude-plugin/plugin.json`: Claude Code manifest.
 - `.mcp.json`: production connection to `https://mcp.cloudpilot.ai/mcp`.
+- `assets/logo.svg`: official [CloudPilot logo](https://assets.cloudpilot.ai/favicon/favicon.svg), bundled for Codex plugin branding.
 - `evaluation.md`: generic manual cases and acceptance boundaries.
 - `testing/mcp.local.json`: optional developer-only localhost connection.
 
@@ -38,8 +39,8 @@ the [evaluation cases](evaluation.md); do not load a second standalone skill.
 Validate both the plugin and marketplace with Claude Code before submitting:
 
 ```sh
-claude plugin validate --strict /absolute/path/to/repository/plugins/cloudpilot
-claude plugin validate --strict /absolute/path/to/repository
+claude plugin validate /absolute/path/to/repository/plugins/cloudpilot
+claude plugin validate /absolute/path/to/repository
 ```
 
 Also check both catalogs resolve to this package and the Codex manifest resolves
@@ -49,9 +50,9 @@ or production knowledge-tool availability.
 For a ZIP, run from the plugin directory, placing the archive outside the repo:
 
 ```sh
-python3 -m zipfile -c /absolute/path/to/output/cloudpilot-0.1.0.zip \
-  .codex-plugin .claude-plugin .mcp.json skills README.md evaluation.md
-python3 -m zipfile -t /absolute/path/to/output/cloudpilot-0.1.0.zip
+python3 -m zipfile -c /absolute/path/to/output/cloudpilot-0.1.1.zip \
+  .codex-plugin .claude-plugin .mcp.json assets skills README.md evaluation.md
+python3 -m zipfile -t /absolute/path/to/output/cloudpilot-0.1.1.zip
 ```
 
 Build customer archives only from a clean production-configured checkout.
