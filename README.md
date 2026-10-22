@@ -61,6 +61,53 @@ Avoid loading a standalone copy of the same skill or enabling a duplicate MCP
 connection during testing. Preserve existing credentials and unrelated services;
 do not clear global authentication to troubleshoot this plugin.
 
+## Update
+
+You can ask your agent: "Check for a CloudPilot plugin update" or "Update my
+CloudPilot plugin, keeping my existing MCP connection and login."
+The skill can optionally check once per conversation and mention a confirmed
+newer stable version after answering. Upgrade instructions load only when you
+ask to update; normal questions do not load them. This is best-effort guidance,
+not a background updater or a guaranteed client notification. Older installations
+need one native update before they gain this workflow. See the
+[changelog](plugins/cloudpilot/CHANGELOG.md) for package changes.
+
+### Codex
+
+Refresh the CloudPilot marketplace and inspect the installed version:
+
+```sh
+codex plugin marketplace upgrade cloudpilot-agent-plugins
+codex plugin list --marketplace cloudpilot-agent-plugins --json
+```
+
+Verify the installed version rather than just the available catalog version.
+Restart the desktop app and start a new conversation to load updated files.
+If the installed version remains old, report the incomplete update and inspect
+the native plugin UI for supported update actions; do not uninstall/reinstall.
+Use the CLI bundled with the desktop app when managing that installation.
+See the [official commands](https://learn.chatgpt.com/docs/cli/reference#codex-plugin-marketplace).
+
+### Claude Code
+
+Run from a shell, preserving the installed scope (`--scope` when necessary):
+
+```sh
+claude plugin marketplace update cloudpilot-agent-plugins
+claude plugin update cloudpilot@cloudpilot-agent-plugins
+```
+
+Verify the installed version, then use `/reload-plugins` if supported or start
+a new session. For native automatic updates, open `/plugin`, select Marketplaces,
+choose CloudPilot, and enable auto-update. Third-party marketplaces default to
+auto-update off; publishers cannot enable it for users. See the
+[official update guidance](https://code.claude.com/docs/en/plugins/host-marketplace#turn-on-auto-update).
+
+Neither update flow requires removing the plugin or clearing OAuth credentials.
+Public product documentation comes from remote MCP and does not require a local
+plugin update for every documentation change. Fixed-ref and local/test installs
+are not automatically moved to the stable channel.
+
 ## Try it
 
 - What does `minNonSpotReplicas` mean in CloudPilot?
@@ -81,6 +128,7 @@ step. This repository marketplace is not a listing in a client's public director
 
 Keep procedural guidance in the shared skill, and product facts in the official
 documentation served by MCP. Update plugin manifests together when releasing a
-package change. Use the [package guide](plugins/cloudpilot/README.md) for packaging
+package change, and record changes in the [changelog](plugins/cloudpilot/CHANGELOG.md).
+Use the [package guide](plugins/cloudpilot/README.md) for packaging
 and local testing and the [evaluation cases](plugins/cloudpilot/evaluation.md)
 for behavioral checks. Do not commit credentials, customer data, or transcripts.
