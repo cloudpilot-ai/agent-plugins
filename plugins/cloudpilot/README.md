@@ -6,10 +6,11 @@ manifests, and a production MCP connection. For customer installation, see the
 
 ## Contents
 
-- `skills/cloudpilot-knowledge/SKILL.md`: retrieval and read-only reasoning.
+- `skills/cloudpilot-knowledge/SKILL.md`: retrieval, read-only reasoning, and authorized plugin maintenance.
 - `.codex-plugin/plugin.json`: Codex compatibility manifest.
 - `.claude-plugin/plugin.json`: Claude Code manifest.
 - `.mcp.json`: production connection to `https://mcp.cloudpilot.ai/mcp`.
+- `CHANGELOG.md`: package versions and changes; product documentation stays in MCP.
 - `assets/logo.svg`: official [CloudPilot logo](https://assets.cloudpilot.ai/favicon/favicon.svg), bundled for Codex plugin branding.
 - `evaluation.md`: generic manual cases and acceptance boundaries.
 - `testing/mcp.local.json`: optional developer-only localhost connection.
@@ -50,12 +51,21 @@ or production knowledge-tool availability.
 For a ZIP, run from the plugin directory, placing the archive outside the repo:
 
 ```sh
-python3 -m zipfile -c /absolute/path/to/output/cloudpilot-0.1.1.zip \
-  .codex-plugin .claude-plugin .mcp.json assets skills README.md evaluation.md
-python3 -m zipfile -t /absolute/path/to/output/cloudpilot-0.1.1.zip
+python3 -m zipfile -c /absolute/path/to/output/cloudpilot-0.1.2.zip \
+  .codex-plugin .claude-plugin .mcp.json assets skills README.md CHANGELOG.md evaluation.md
+python3 -m zipfile -t /absolute/path/to/output/cloudpilot-0.1.2.zip
 ```
 
 Build customer archives only from a clean production-configured checkout.
 Verify the archived endpoint is the production URL. Do not include `testing/`,
 local configuration, authentication state, generated outputs, or transcripts.
 There are no install hooks, executable helpers, or bundled credentials.
+
+## Release maintenance
+
+For a stable package change, bump both client manifests to the same numeric
+`major.minor.patch` version, add a changelog entry, and update the ZIP examples.
+The merged package on `main` is the stable channel used by optional skill checks.
+Do not publish an update by changing cached client files or reusing a version.
+Check the [update instructions](https://github.com/cloudpilot-ai/agent-plugins#update)
+when changing client commands. No separate version service or updater is needed.
